@@ -1,0 +1,207 @@
+body {
+    font-family: 'Lora', serif; /* Elegant serif font for premium feel */
+    background: linear-gradient(135deg, #1e2a78, #3b88c1); /* Deep blue gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    background-size: cover;
+    overflow: hidden;
+    color: #fff;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #f1f1f1;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6); /* Elegant text shadow */
+    margin: 0;
+    padding: 20px;
+    font-weight: 700;
+}
+
+/* Container for the Game */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85); /* Light, translucent background */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px); /* Blurred background behind the game */
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* To ensure padding doesn't break layout */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Status and Score */
+.status, .score {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #333;
+    font-weight: 400;
+}
+
+/* Reset Button */
+.reset-button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    letter-spacing: 1px;
+    transform: scale(1);
+}
+
+.reset-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Difficulty Selector */
+.difficulty-selector {
+    margin: 15px 0;
+    font-size: 1.0rem;
+}
+
+/* Grid Selector */
+.grid-selector {
+    margin: 15px 0;
+    font-size: 1.0rem;
+}
+
+/* Game Board */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* Reduced size */
+    grid-template-rows: repeat(3, 100px); /* Reduced size */
+    gap: 5px;
+    margin: 30px auto;
+    justify-items: center;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box; /* Prevents overflow */
+}
+
+/* Game Cells */
+.cell {
+    width: 100px;  /* Reduced size */
+    height: 100px; /* Reduced size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 2px solid #2980b9;
+    font-size: 2.5rem; /* Reduced font size */
+    font-weight: bold;
+    color: #3498db;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.cell:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Winning Cells Highlight */
+.winning-cell {
+    background-color: #e67e22 !important;
+    transform: scale(1.1);
+    animation: win-highlight 0.8s ease-in-out forwards;
+}
+
+/* Winning Cells Animation */
+@keyframes win-highlight {
+    0% {
+        background-color: #e67e22;
+        transform: scale(1.1);
+    }
+    100% {
+        background-color: #f39c12;
+        transform: scale(1);
+    }
+}
+
+/* Winning Message Animation */
+.win-animation {
+    color: #f39c12;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0px 0px 15px rgba(255, 87, 34, 0.8); /* Glowing effect */
+    animation: winning-message 1s ease-out;
+}
+
+@keyframes winning-message {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Extra Info and Game Over Message */
+.extra-info {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Typography and Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .board {
+        grid-template-columns: repeat(3, 80px); /* Smaller cells for medium screens */
+        grid-template-rows: repeat(3, 80px);    /* Smaller cells for medium screens */
+    }
+
+    .cell {
+        width: 80px;  /* Smaller cells for medium screens */
+        height: 80px; /* Smaller cells for medium screens */
+        font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+
+    .status, .score, .extra-info, .difficulty-selector, .grid-selector {
+        font-size: 1.4rem; /* Make text smaller for smaller screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .board {
+        grid-template-columns: repeat(3, 70px); /* Smaller cells for very small screens */
+        grid-template-rows: repeat(3, 70px);    /* Smaller cells for very small screens */
+    }
+
+    .cell {
+        width: 70px;  /* Smaller cells for very small screens */
+        height: 70px; /* Smaller cells for very small screens */
+        font-size: 1.8rem; /* Further reduce font size */
+    }
+
+    .status, .score, .extra-info {
+        font-size: 1.3rem; /* Further reduce font size on very small screens */
+    }
+}
